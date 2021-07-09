@@ -22,7 +22,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -32,19 +32,25 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <!--Login Page-->
         <Frame x:Name="Background" Visibility="Visible" Grid.RowSpan="10" Grid.ColumnSpan="7" Background="#E08F52"/>
-
+        
+        <StackPanel x:Name="TEmployeeOfTheMonth" Grid.Row="1" Grid.Column="3" Grid.RowSpan="3" Margin="0,15,0,15">
+            <TextBlock Text="Employee" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+            <TextBlock Text="of" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Text="The Month" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+        </StackPanel>
+        
+        <!--Login Page-->
         <TextBlock x:Name="UsernameLogin" Text="USERNAME" Visibility="Visible" TextWrapping="Wrap" Grid.Column="2" Grid.Row="5" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Bahnschrift Light Condensed" Margin="0,0,10,0"/>
         <TextBox x:Name="UsernameBoxLogin" Visibility="Visible" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Margin="25,5,65,10" MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" />
 
         <TextBlock x:Name="PasswordLogin" Text="PASSWORD" Visibility="Visible" Grid.Column="2" Grid.Row="6" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Bahnschrift Light Condensed" Margin="0,0,10,0"/>
         <PasswordBox x:Name="PasswordBoxLogin" Visibility="Visible" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" Margin="25,5,65,10" MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215"/>
 
-        <Button x:Name="SignInButton" Visibility="Visible" Content="Sign In" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" Margin="60,10,100,10" MaxHeight="35" MaxWidth="150" MinWidth="80" Click="SignIn"/>
-
+        <Button x:Name="BLLogin" Visibility="Visible" Content="Sign In" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" Margin="60,10,100,10" MaxHeight="35" MaxWidth="150" MinWidth="80" Click="BLLogin_Click" />
+        
         <!--Main Menu Page-->
-        <StackPanel Visibility="Hidden" x:Name="MainMenuPanel" Grid.Column="2" Grid.Row="4" Grid.RowSpan="5" Grid.ColumnSpan="3">
+        <StackPanel Visibility="Hidden" x:Name="MainMenu" Grid.Column="2" Grid.Row="4" Grid.RowSpan="5" Grid.ColumnSpan="3">
             <ContentControl>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -59,18 +65,14 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Button x:Name="MMVote"  Content="Vote" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="MMVote_Click"/>
-                    <Button x:Name="MMCurrentStandings"  Content="Current Standings" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="MMCurrentStandings_Click"/>
-                    <Button x:Name="MMPossiblePrizes"  Content="Possible Prizes" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
-                    <Button x:Name="MMInfoRules"  Content='Info and Rules' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
+                    <Button x:Name="BMMVote"  Content="Vote" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMVote_Click"/>
+                    <Button x:Name="BMMCurrentStandings"  Content="Current Standings" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMCurrentStandings_Click"/>
+                    <Button x:Name="BMMPossiblePrizes"  Content="Possible Prizes" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMPossiblePrizes_Click"/>
+                    <Button x:Name="BMMInfoRules"  Content='Info and Rules' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMInfoRules_Click"/>
 
                 </Grid>
             </ContentControl>
         </StackPanel>
-
-        <TextBlock Text="Employee" Grid.Column="3" Grid.Row="1" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
-        <TextBlock Text="of" Grid.Column="3" Grid.Row="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBlock Text="The Month" Grid.Column="3" Grid.Row="3" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
 
         <!--Vote Page-->
         <StackPanel x:Name="Vote" Visibility="Hidden" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="3">
@@ -80,26 +82,28 @@
                 <ComboBoxItem>Stupid3</ComboBoxItem>
                 <ComboBoxItem>Stupid4</ComboBoxItem>
             </ComboBox>
-            <Button Content="VOTE" Margin="0,60,0,0" MaxWidth="120" MinHeight="30" MaxHeight="40" Click="Button_Click"/>
+            <Button x:Name="BVVote" Content="VOTE" Margin="0,60,0,0" MaxWidth="120" MinHeight="30" MaxHeight="40" Click="BVVote_Click"/>
         </StackPanel>
 
 
         <!--Current Standings Page-->
         <ScrollViewer x:Name="CurrentStandings" Visibility="Hidden" Grid.Row="4" Grid.Column="2" Grid.RowSpan="5" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Hidden">
             <StackPanel>
-                <UniformGrid Rows="13" Columns="3">
-                    
-                </UniformGrid>
+                <Button x:Name="BCSBack" Content="Back" Margin="150,40" Click="BCSBack_Click"/>
             </StackPanel>
         </ScrollViewer>
 
 
         <!--Possible Prizes Page-->
-
+        <StackPanel x:Name="PossiblePrizes" Visibility="Hidden" Grid.Row="5" Grid.Column="2" Grid.RowSpan="4" Grid.ColumnSpan="3">
+            <Button x:Name="BPPBack" Content="Back" Margin="150,40" Click="BPPBack_Click"/>
+        </StackPanel>
 
 
         <!--Info & Rules Page-->
-
+        <StackPanel x:Name="InfoAndRules" Visibility="Hidden" Grid.Row="5" Grid.Column="2" Grid.RowSpan="4" Grid.ColumnSpan="3">
+            <Button x:Name="BIRBack" Content="Back" Margin="150,40" Click="BIRBack_Click"/>
+        </StackPanel>
 
 
 

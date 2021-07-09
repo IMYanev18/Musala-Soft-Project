@@ -27,46 +27,116 @@ namespace Employee_of_The_Month
             InitializeComponent();
         }
 
-        private void SignIn(object sender, RoutedEventArgs e)
+        // Login stuff
+        private void BLLogin_Click(object sender, RoutedEventArgs e)
         {
             //Login page visibility
             UsernameLogin.Visibility = Visibility.Hidden;
             UsernameBoxLogin.Visibility = Visibility.Hidden;
             PasswordLogin.Visibility = Visibility.Hidden;
             PasswordBoxLogin.Visibility = Visibility.Hidden;
-            SignInButton.Visibility = Visibility.Hidden;
-            
+            BLLogin.Visibility = Visibility.Hidden;
+
             //Main menu visibility
-            MainMenuPanel.Visibility = Visibility.Visible;
+            MainMenu.Visibility = Visibility.Visible;
         }
 
-        private void MMVote_Click(object sender, RoutedEventArgs e)
+        //Main menu stuff
+        private void BMMVote_Click(object sender, RoutedEventArgs e)
         {
-            MainMenuPanel.Visibility = Visibility.Hidden;
+
+            //Page Change
+            MainMenu.Visibility = Visibility.Hidden;
             Vote.Visibility = Visibility.Visible;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BMMCurrentStandings_Click(object sender, RoutedEventArgs e)
+        {
+
+            //Main Text Change
+            TEmployeeOfTheMonth.Visibility = Visibility.Hidden;
+
+            //Page Change
+            MainMenu.Visibility = Visibility.Hidden;
+            CurrentStandings.Visibility = Visibility.Visible;
+        }
+
+        private void BMMPossiblePrizes_Click(object sender, RoutedEventArgs e)
+        {
+
+            //Main Text Change
+            TEmployeeOfTheMonth.Visibility = Visibility.Hidden;
+
+            //Page Change
+            MainMenu.Visibility = Visibility.Hidden;
+            PossiblePrizes.Visibility = Visibility.Visible;
+        }
+
+        private void BMMInfoRules_Click(object sender, RoutedEventArgs e)
+        {
+            //Main Text Change
+            TEmployeeOfTheMonth.Visibility = Visibility.Hidden;
+
+            //Page Change
+            MainMenu.Visibility = Visibility.Hidden;
+            InfoAndRules.Visibility = Visibility.Visible;
+        }
+
+        // Vote stuff
+        private void BVVote_Click(object sender, RoutedEventArgs e)
         {
             if (VoteComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Please select a value", "Error");
                 return;
             }
-            else{
+            else
+            {
                 //Send vote to database
-                if (true){ //check if vote was registered/has already voted in the database else spit an error code
+                if (true)
+                { //check if vote was registered/has already voted in the database else spit an error code
                     MessageBox.Show("Your vote was succesful", "Congratulations");
-                    MainMenuPanel.Visibility = Visibility.Visible;
+
+                    //Page Change
+                    MainMenu.Visibility = Visibility.Visible;
                     Vote.Visibility = Visibility.Hidden;
                 }
             }
         }
 
-        private void MMCurrentStandings_Click(object sender, RoutedEventArgs e)
+        //Current Standings stuff
+        private void BCSBack_Click(object sender, RoutedEventArgs e)
         {
-            MainMenuPanel.Visibility = Visibility.Hidden;
-            CurrentStandings.Visibility = Visibility.Visible;
+            //Main Text Change
+            TEmployeeOfTheMonth.Visibility = Visibility.Visible;
+
+            //Page Change
+            MainMenu.Visibility = Visibility.Visible;
+            CurrentStandings.Visibility = Visibility.Hidden;
         }
+
+        //Possible Prizes stuff
+        private void BPPBack_Click(object sender, RoutedEventArgs e)
+        {
+            //Main Text Change
+            TEmployeeOfTheMonth.Visibility = Visibility.Visible;
+
+            //Page Change
+            MainMenu.Visibility = Visibility.Visible;
+            PossiblePrizes.Visibility = Visibility.Hidden;
+        }
+
+        //Info and Rules stuff
+        private void BIRBack_Click(object sender, RoutedEventArgs e)
+        {
+
+            //Main Text Change
+            TEmployeeOfTheMonth.Visibility = Visibility.Visible;
+
+            //Page Change
+            MainMenu.Visibility = Visibility.Visible;
+            InfoAndRules.Visibility = Visibility.Hidden;
+        }
+
     }
 }
