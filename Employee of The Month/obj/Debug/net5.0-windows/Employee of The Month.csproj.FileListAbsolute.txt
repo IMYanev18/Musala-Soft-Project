@@ -1,0 +1,22 @@
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\bin\Debug\net5.0-windows\Employee of The Month.exe
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\bin\Debug\net5.0-windows\Employee of The Month.deps.json
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\bin\Debug\net5.0-windows\Employee of The Month.runtimeconfig.json
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\bin\Debug\net5.0-windows\Employee of The Month.runtimeconfig.dev.json
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\bin\Debug\net5.0-windows\Employee of The Month.dll
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\bin\Debug\net5.0-windows\ref\Employee of The Month.dll
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\bin\Debug\net5.0-windows\Employee of The Month.pdb
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month.csproj.AssemblyReference.cache
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\MainWindow.g.cs
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\App.g.cs
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month_MarkupCompile.cache
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month_MarkupCompile.lref
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\MainWindow.baml
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month.g.resources
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month.GeneratedMSBuildEditorConfig.editorconfig
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month.AssemblyInfoInputs.cache
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month.AssemblyInfo.cs
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month.csproj.CoreCompileInputs.cache
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month.dll
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\ref\Employee of The Month.dll
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month.pdb
+D:\bullshit\programi\proekt(praktika)\Employee of The Month\Employee of The Month\obj\Debug\net5.0-windows\Employee of The Month.genruntimeconfig.cache
