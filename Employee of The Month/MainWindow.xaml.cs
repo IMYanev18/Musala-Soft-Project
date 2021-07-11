@@ -31,8 +31,7 @@ namespace Employee_of_The_Month
         private void BLLogin_Click(object sender, RoutedEventArgs e)
         {
             //Login page visibility
-            
-            BLLogin.Visibility = Visibility.Hidden;
+            Login.Visibility = Visibility.Hidden;
 
             //Main menu visibility
             MainMenu.Visibility = Visibility.Visible;
@@ -50,8 +49,6 @@ namespace Employee_of_The_Month
         private void BMMCurrentStandings_Click(object sender, RoutedEventArgs e)
         {
 
-            //Main Text Change
-            TEmployeeOfTheMonth.Visibility = Visibility.Hidden;
 
             //Page Change
             MainMenu.Visibility = Visibility.Hidden;
@@ -61,8 +58,7 @@ namespace Employee_of_The_Month
         private void BMMPossiblePrizes_Click(object sender, RoutedEventArgs e)
         {
 
-            //Main Text Change
-            TEmployeeOfTheMonth.Visibility = Visibility.Hidden;
+
 
             //Page Change
             MainMenu.Visibility = Visibility.Hidden;
@@ -71,8 +67,7 @@ namespace Employee_of_The_Month
 
         private void BMMInfoRules_Click(object sender, RoutedEventArgs e)
         {
-            //Main Text Change
-            TEmployeeOfTheMonth.Visibility = Visibility.Hidden;
+
 
             //Page Change
             MainMenu.Visibility = Visibility.Hidden;
@@ -104,8 +99,7 @@ namespace Employee_of_The_Month
         //Current Standings stuff
         private void BCSBack_Click(object sender, RoutedEventArgs e)
         {
-            //Main Text Change
-            TEmployeeOfTheMonth.Visibility = Visibility.Visible;
+            
 
             //Page Change
             MainMenu.Visibility = Visibility.Visible;
@@ -115,8 +109,7 @@ namespace Employee_of_The_Month
         //Possible Prizes stuff
         private void BPPBack_Click(object sender, RoutedEventArgs e)
         {
-            //Main Text Change
-            TEmployeeOfTheMonth.Visibility = Visibility.Visible;
+
 
             //Page Change
             MainMenu.Visibility = Visibility.Visible;
@@ -127,13 +120,17 @@ namespace Employee_of_The_Month
         private void BIRBack_Click(object sender, RoutedEventArgs e)
         {
 
-            //Main Text Change
-            TEmployeeOfTheMonth.Visibility = Visibility.Visible;
+
 
             //Page Change
             MainMenu.Visibility = Visibility.Visible;
             InfoAndRules.Visibility = Visibility.Hidden;
         }
 
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            Login.Visibility = Visibility.Hidden;
+            ForgotUsernamePassword.Visibility = Visibility.Visible;
+        }
     }
 }
