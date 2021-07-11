@@ -41,16 +41,41 @@
         </StackPanel>
         
         <!--Login Page-->
-        <TextBlock x:Name="UsernameLogin" Text="USERNAME" Visibility="Visible" TextWrapping="Wrap" Grid.Column="2" Grid.Row="5" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Bahnschrift Light Condensed" Margin="0,0,10,0"/>
-        <TextBox x:Name="UsernameBoxLogin" Visibility="Visible" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Margin="25,5,65,10" MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" />
+        <StackPanel x:Name="Login" Visibility="Visible" Grid.Column="2" Grid.Row="5" Grid.RowSpan="4" Grid.ColumnSpan="3" Orientation="Horizontal"  HorizontalAlignment="Center" >
+            <ContentControl>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-        <TextBlock x:Name="PasswordLogin" Text="PASSWORD" Visibility="Visible" Grid.Column="2" Grid.Row="6" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Bahnschrift Light Condensed" Margin="0,0,10,0"/>
-        <PasswordBox x:Name="PasswordBoxLogin" Visibility="Visible" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" Margin="25,5,65,10" MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215"/>
+                    <TextBlock Text="USERNAME" Margin="0,0,40,0" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="25" FontFamily="Bahnschrift Light Condensed" />
+                    <TextBox Margin="35,0,0,0" Grid.Row="0" Grid.Column="1" MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" MinWidth="215"/>
 
-        <Button x:Name="BLLogin" Visibility="Visible" Content="Sign In" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" Margin="60,10,100,10" MaxHeight="35" MaxWidth="150" MinWidth="80" Click="BLLogin_Click" />
+                    <TextBlock Text="PASSWORD" Margin="0,0,40,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="25" FontFamily="Bahnschrift Light Condensed"/>
+                    <PasswordBox Margin="35,0,0,0" Grid.Row="1" Grid.Column="1"  MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" MinWidth="215"/>
+
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2">
+                        <Hyperlink NavigateUri="Reviews.xaml">Forgot your Username/Password?</Hyperlink>
+                    </TextBlock>
+
+
+                    <Button x:Name="BLLogin" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Sign In" Margin="0" MaxHeight="35" MaxWidth="150" MinWidth="80" Click="BLLogin_Click" />
+                </Grid>
+            </ContentControl>
+        </StackPanel>
+        
+        <!--Forgot your Username/Password?-->
         
         <!--Main Menu Page-->
-        <StackPanel Visibility="Hidden" x:Name="MainMenu" Grid.Column="2" Grid.Row="4" Grid.RowSpan="5" Grid.ColumnSpan="3">
+        <StackPanel x:Name="MainMenu" Visibility="Hidden" Grid.Column="2" Grid.Row="4" Grid.RowSpan="5" Grid.ColumnSpan="3">
             <ContentControl>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -89,21 +114,50 @@
         <!--Current Standings Page-->
         <ScrollViewer x:Name="CurrentStandings" Visibility="Hidden" Grid.Row="4" Grid.Column="2" Grid.RowSpan="5" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Hidden">
             <StackPanel>
-                <Button x:Name="BCSBack" Content="Back" Margin="150,40" Click="BCSBack_Click"/>
+
+                
+                
+                <Button x:Name="BCSBack" Content="Back" Margin="150,0" Click="BCSBack_Click"/>
             </StackPanel>
         </ScrollViewer>
 
 
         <!--Possible Prizes Page-->
         <StackPanel x:Name="PossiblePrizes" Visibility="Hidden" Grid.Row="5" Grid.Column="2" Grid.RowSpan="4" Grid.ColumnSpan="3">
-            <Button x:Name="BPPBack" Content="Back" Margin="150,40" Click="BPPBack_Click"/>
+            <Button x:Name="BPPBack" Content="Back" Margin="150,0" Click="BPPBack_Click"/>
         </StackPanel>
 
 
         <!--Info & Rules Page-->
-        <StackPanel x:Name="InfoAndRules" Visibility="Hidden" Grid.Row="5" Grid.Column="2" Grid.RowSpan="4" Grid.ColumnSpan="3">
-            <Button x:Name="BIRBack" Content="Back" Margin="150,40" Click="BIRBack_Click"/>
-        </StackPanel>
+        <ScrollViewer x:Name="InfoAndRules" Visibility="Hidden" Grid.Row="1" Grid.Column="1" Grid.RowSpan="8" Grid.ColumnSpan="5" VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+
+                <TextBlock Text="Info Rules" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+                <TextBlock Text="&amp; FAQ" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed" Margin="0,0,0,35"/>
+
+                <TextBlock Text="In this page you will be able to get an answer to every question you have" HorizontalAlignment="Center" FontSize="18" FontFamily="Bahnschrift Light SemiCondensed"/>
+                
+                <!--Rules-->
+                
+                <StackPanel>
+                    <TextBlock Text="Rules" HorizontalAlignment="Center" FontSize="30" FontFamily="Bahnschrift SemiCondensed" Margin="0,15"/>
+                    
+                    <TextBlock Text="You can vote only for one person that isn't you. Whoever receives the most votes wins a prize. The prize is chosen at random from the possible prizes (Check out Possible Prizes page)" TextWrapping="Wrap" TextAlignment="Center" Margin="30,0" FontSize="18" FontFamily="Bahnschrift Light SemiCondensed"/>
+                </StackPanel>
+                
+                <!--FAQ-->
+                <StackPanel>
+                    <TextBlock Text="FAQ" HorizontalAlignment="Center" FontSize="30" FontFamily="Bahnschrift SemiCondensed" Margin="0,15"/>
+
+                    <TextBlock Text="Q: I accidentally voted for the wrong person. Can I change my vote?&#x0a;A: No, you can't. Votes are final so be careful when choosing who to vote for." FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    <TextBlock Text="Q: Can I exchange my prize for another prize?&#x0a;A: No, you can't. That's why the prize is chosen at random. You can see the possible prizes at Possible Prizes page" FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    <TextBlock Text='Q: I forgot my login information. How can I recover my password/username?&#x0a;A: Press "Forgot Username/Password?". Then you will be asked for your email. You will receive your username and password on your email.' FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    <TextBlock Text="Q: I found a bug.&#x0a;A: Please don't exploit it and contact us." FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                </StackPanel>
+                
+                <Button x:Name="BIRBack" Content="Back" Margin="150,20" Click="BIRBack_Click" MaxWidth="200" MinHeight="35"/>
+            </StackPanel>
+        </ScrollViewer>
 
 
 

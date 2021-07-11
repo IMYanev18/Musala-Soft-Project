@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\bullshit\\programi\\proekt(praktika)\\Employee of The Month\\Employee of The Month\\Employee of The Month.csproj",
+      "projectUniqueName": "D:\\bullshit\\programi\\proekt(praktika)\\Employee of The Month\\Employee of The Month.csproj",
       "projectName": "Employee of The Month",
-      "projectPath": "D:\\bullshit\\programi\\proekt(praktika)\\Employee of The Month\\Employee of The Month\\Employee of The Month.csproj",
+      "projectPath": "D:\\bullshit\\programi\\proekt(praktika)\\Employee of The Month\\Employee of The Month.csproj",
       "packagesPath": "C:\\Users\\Poop\\.nuget\\packages\\",
-      "outputPath": "D:\\bullshit\\programi\\proekt(praktika)\\Employee of The Month\\Employee of The Month\\obj\\",
+      "outputPath": "D:\\bullshit\\programi\\proekt(praktika)\\Employee of The Month\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Poop\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -31,10 +31,7 @@ namespace Employee_of_The_Month
         private void BLLogin_Click(object sender, RoutedEventArgs e)
         {
             //Login page visibility
-            UsernameLogin.Visibility = Visibility.Hidden;
-            UsernameBoxLogin.Visibility = Visibility.Hidden;
-            PasswordLogin.Visibility = Visibility.Hidden;
-            PasswordBoxLogin.Visibility = Visibility.Hidden;
+            
             BLLogin.Visibility = Visibility.Hidden;
 
             //Main menu visibility
