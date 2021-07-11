@@ -36,7 +36,7 @@
         
         
         <!--Login Page-->
-        <StackPanel x:Name="Login" Visibility="Hidden" Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="3" Orientation="Horizontal"  HorizontalAlignment="Center" >
+        <StackPanel x:Name="Login" Visibility="Visible" Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="3" Orientation="Horizontal"  HorizontalAlignment="Center" >
             <ContentControl>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -83,7 +83,7 @@
         </StackPanel>
         
         <!--Main Menu Page-->
-        <StackPanel x:Name="MainMenu" Visibility="Visible" Grid.Column="2" Grid.Row="4" Grid.RowSpan="5" Grid.ColumnSpan="3">
+        <StackPanel x:Name="MainMenu" Visibility="Hidden" Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="3">
             <ContentControl>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -101,29 +101,50 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="Employee" Grid.Column="1" Grid.Row="0" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
-                    <TextBlock Text="of" Grid.Column="1" Grid.Row="1" FontSize="20" HorizontalAlignment="Left" Margin="50,0,0,0"/>
-                    <TextBlock Text="The Month" Grid.Column="1" Grid.Row="2" Margin="0" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+                    <TextBlock Text="Employee" Grid.Column="1" Grid.Row="0" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+                    <TextBlock Text="of" Grid.Column="1" Grid.Row="1" FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock Text="The Month" Grid.Column="1" Grid.Row="2" Margin="0" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
 
-
-                    <Button x:Name="BMMVote"  Content="Vote" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMVote_Click"/>
-                    <Button x:Name="BMMCurrentStandings"  Content="Current Standings" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMCurrentStandings_Click"/>
-                    <Button x:Name="BMMPossiblePrizes"  Content="Possible Prizes" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMPossiblePrizes_Click"/>
-                    <Button x:Name="BMMInfoRules"  Content='Info and Rules' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMInfoRules_Click"/>
+                    <Button x:Name="BMMVote"  Content="Vote" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Margin="0,25,0,10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMVote_Click"/>
+                    <Button x:Name="BMMCurrentStandings"  Content="Current Standings" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMCurrentStandings_Click"/>
+                    <Button x:Name="BMMPossiblePrizes"  Content="Possible Prizes" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMPossiblePrizes_Click"/>
+                    <Button x:Name="BMMInfoRules"  Content='Info and Rules' Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMInfoRules_Click"/>
 
                 </Grid>
             </ContentControl>
         </StackPanel>
 
         <!--Vote Page-->
-        <StackPanel x:Name="Vote" Visibility="Hidden" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="3">
-            <ComboBox x:Name="VoteComboBox" Margin="120,15,120,0" MaxWidth="250" MinWidth="150" Height="30">
-                <ComboBoxItem>Stupid1</ComboBoxItem>
-                <ComboBoxItem>Stupid2</ComboBoxItem>
-                <ComboBoxItem>Stupid3</ComboBoxItem>
-                <ComboBoxItem>Stupid4</ComboBoxItem>
-            </ComboBox>
-            <Button x:Name="BVVote" Content="VOTE" Margin="0,60,0,0" MaxWidth="120" MinHeight="30" MaxHeight="40" Click="BVVote_Click"/>
+        <StackPanel x:Name="Vote" Visibility="Hidden" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="8">
+            <ContentControl>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Employee" Grid.Column="1" Grid.Row="0" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+                    <TextBlock Text="of" Grid.Column="1" Grid.Row="1" FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock Text="The Month" Grid.Column="1" Grid.Row="2" Margin="0" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+
+                    <ComboBox x:Name="VoteComboBox" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Margin="0,80,0,0" MaxWidth="250" MinWidth="150" Height="30" FontSize="16">
+                        <ComboBoxItem>Stupid1</ComboBoxItem>
+                        <ComboBoxItem>Stupid2</ComboBoxItem>
+                        <ComboBoxItem>Stupid3</ComboBoxItem>
+                        <ComboBoxItem>Stupid4</ComboBoxItem>
+                    </ComboBox>
+                    
+                    <Button x:Name="BVVote" Content="VOTE" Grid.Column="1" Grid.Row="4" Margin="0,30,0,0" MaxWidth="120" MinHeight="30" MaxHeight="40" Click="BVVote_Click"/>
+                </Grid>
+            </ContentControl>
         </StackPanel>
 
 
