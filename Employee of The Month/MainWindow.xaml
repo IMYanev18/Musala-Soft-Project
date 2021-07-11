@@ -65,8 +65,10 @@
                     <TextBlock Text="PASSWORD" Margin="10,35,30,0" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="25" FontFamily="Bahnschrift Light Condensed"/>
                     <PasswordBox Margin="30,35,0,0" Grid.Row="4" Grid.Column="1"  MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" MinWidth="215"/>
 
-                    <TextBlock Grid.Row="5" Grid.ColumnSpan="2" Margin="0,10,0,0">
-                        <Hyperlink Click="Hyperlink_Click">Forgot your Username/Password?</Hyperlink>
+                    <TextBlock Grid.Row="5" Grid.ColumnSpan="2" Margin="10,5,0,0">
+                        <Hyperlink Click="Hyperlink_Click">
+                            Forgot your Username/Password?
+                        </Hyperlink>
                     </TextBlock>
 
 
@@ -161,6 +163,8 @@
 
         <!--Possible Prizes Page-->
         <StackPanel x:Name="PossiblePrizes" Visibility="Hidden" Grid.Row="5" Grid.Column="2" Grid.RowSpan="4" Grid.ColumnSpan="3">
+            
+            
             <Button x:Name="BPPBack" Content="Back" Margin="150,0" Click="BPPBack_Click"/>
         </StackPanel>
 
@@ -189,7 +193,8 @@
                     <TextBlock Text="Q: I accidentally voted for the wrong person. Can I change my vote?&#x0a;A: No, you can't. Votes are final so be careful when choosing who to vote for." FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
                     <TextBlock Text="Q: Can I exchange my prize for another prize?&#x0a;A: No, you can't. That's why the prize is chosen at random. You can see the possible prizes at Possible Prizes page" FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
                     <TextBlock Text='Q: I forgot my login information. How can I recover my password/username?&#x0a;A: Press "Forgot Username/Password?". Then you will be asked for your email. You will receive your username and password on your email.' FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
-                    <TextBlock Text="Q: I found a bug.&#x0a;A: Please don't exploit it and contact us." FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    <TextBlock Text="Q: How do I register?&#x0a;A: Talk to your boss." FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    <TextBlock Text="Q: I found a bug.&#x0a;A: Please don't exploit it and tell your boss." FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
                 </StackPanel>
                 
                 <Button x:Name="BIRBack" Content="Back" Margin="150,20" Click="BIRBack_Click" MaxWidth="200" MinHeight="35"/>
