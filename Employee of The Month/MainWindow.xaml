@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         MinWidth="700"
         MinHeight="450"
+        Background="#E08F52"
         Title="Employee of The Month" Height="450" Width="800">
     <Grid x:Name="main">
         <Grid.ColumnDefinitions>
@@ -32,7 +33,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Frame x:Name="Background" Visibility="Visible" Grid.RowSpan="10" Grid.ColumnSpan="7" Background="#E08F52"/>
+        
         
         
         <!--Login Page-->
@@ -144,9 +145,11 @@
                         <TextBlock Text="of" Grid.Column="1" Grid.Row="1" FontSize="20" HorizontalAlignment="Center"/>
                         <TextBlock Text="The Month" Grid.Column="1" Grid.Row="2" Margin="0" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
 
-                        <Button x:Name="BMMAAddUser"  Content='Add User' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMInfoRules_Click"/>
-                        <Button x:Name="BMMADelUser"  Content='Delete User' Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMInfoRules_Click"/>
-                        <Button x:Name="BMMAAddPrize"  Content='Add a Prize' Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMInfoRules_Click"/>
+                        <TextBlock Text="Admin" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                        <Button x:Name="BMMAAddUser"  Content='Add User' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
+                        <Button x:Name="BMMADelUser"  Content='Delete User' Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
+                        <Button x:Name="BMMAAddPrize"  Content='Add a Prize' Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
                         
 
                     </Grid>

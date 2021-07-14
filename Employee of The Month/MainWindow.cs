@@ -25,8 +25,10 @@ namespace Employee_of_The_Month
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static string Id, Email, Username, VoteSQL, Admin;
 
-        DBAccess dBAccess = new DBAccess();
+        DBAccess objDBAccess = new DBAccess();
+        DataTable dtUsers = new DataTable();
 
         public MainWindow()
         {
@@ -36,40 +38,73 @@ namespace Employee_of_The_Month
         // Login stuff
         private void BLLogin_Click(object sender, RoutedEventArgs e)
         {
-            
+            //string usernames and passwords 
+            string UsernameTxt = txtUsername.Text;
+            string PasswordTxt = txtPassword.Password;
 
-            string Username = txtUsername.Text;
-            string Password = txtPassword.Password;
-
-            if(txtUsername.Equals(null)){
+            //checks if username text box is empty and spits a message
+            if(UsernameTxt.Equals("")){
                 MessageBox.Show("Username field can't be empty");
             }
-            else if (txtPassword.Equals(null))
+            
+            //checks if password text box is empty and spits a message
+            else if (PasswordTxt.Equals(""))
             {
                 MessageBox.Show("Password field can't be empty");
             }
+            
+            //means both fields are filled with something
             else
             {
-                SqlCommand readCommand = new SqlCommand("Select FROM Employees");
-            }
-  
-            //Login page visibility
-            Login.Visibility = Visibility.Hidden;
+                //creates a string with the query you send the database
+                string query = "SELECT Username, Vote, Admin FROM Employees WHERE Username ='" + UsernameTxt + "'AND [Password] ='" + PasswordTxt+"'";
+                               
+                //sends the query to the database and fills return in the data table dtUsers
+                objDBAccess.readDatathroughAdapter(query, dtUsers);
 
-            //Main menu visibility
-             MainMenu.Visibility = Visibility.Visible;
+                //if data table has something in it that means that the username and password are correct
+                if (dtUsers.Rows.Count == 1)
+                {
+
+                    Admin = dtUsers.Rows[0]["Admin"].ToString();
+
+
+                    if (Admin == "False")
+                    {
+                        //Login page visibility
+                        Login.Visibility = Visibility.Hidden;
+
+                        //Main menu visibility
+                        MainMenu.Visibility = Visibility.Visible;
+                    }
+
+                    else
+                    {
+                        Login.Visibility = Visibility.Hidden;
+
+                        MainMenuAdmin.Visibility = Visibility.Visible;
+                    }
+                }
+
+                //if the data table is empty that means either the username or the password are wrong
+                else
+                {
+                    MessageBox.Show("Your username or password is wrong");
+                }
+
+
+            }
+ 
+            
 
                 
         }
-          
 
-           
-            
-        
 
         //Main menu stuff
         private void BMMVote_Click(object sender, RoutedEventArgs e)
         {
+
 
             //Page Change
             MainMenu.Visibility = Visibility.Hidden;
