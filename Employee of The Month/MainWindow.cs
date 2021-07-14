@@ -25,7 +25,7 @@ namespace Employee_of_The_Month
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static string Id, Email, Username, VoteSQL, Admin;
+        public static string Id, Email, Username, YourVote, Admin;
 
         DBAccess objDBAccess = new DBAccess();
         DataTable dtUsers = new DataTable();
@@ -57,7 +57,7 @@ namespace Employee_of_The_Month
             else
             {
                 //creates a string with the query you send the database
-                string query = "SELECT Username, Vote, Admin FROM Employees WHERE Username ='" + UsernameTxt + "'AND [Password] ='" + PasswordTxt+"'";
+                string query = "SELECT Id ,Username, Admin FROM Employees WHERE Username ='" + UsernameTxt + "'AND [Password] ='" + PasswordTxt+"'";
                                
                 //sends the query to the database and fills return in the data table dtUsers
                 objDBAccess.readDatathroughAdapter(query, dtUsers);
@@ -65,24 +65,29 @@ namespace Employee_of_The_Month
                 //if data table has something in it that means that the username and password are correct
                 if (dtUsers.Rows.Count == 1)
                 {
-
+                    //Admin gets value either False or True depending on the answer we got from the query
                     Admin = dtUsers.Rows[0]["Admin"].ToString();
+                    Id = dtUsers.Rows[0]["Id"].ToString();
 
-
+                    //Checks if the account is admin
                     if (Admin == "False")
                     {
-                        //Login page visibility
+                        //Hides login page
                         Login.Visibility = Visibility.Hidden;
 
-                        //Main menu visibility
+                        //Shows main menu page
                         MainMenu.Visibility = Visibility.Visible;
+                        dtUsers.Clear();
                     }
 
                     else
                     {
+                        //hides login page
                         Login.Visibility = Visibility.Hidden;
 
+                        //shows admin main menu
                         MainMenuAdmin.Visibility = Visibility.Visible;
+                        dtUsers.Clear();
                     }
                 }
 
@@ -104,11 +109,27 @@ namespace Employee_of_The_Month
         //Main menu stuff
         private void BMMVote_Click(object sender, RoutedEventArgs e)
         {
+            
+            string query = "SELECT Vote FROM Employees WHERE Id='"+Id+"'";
 
 
-            //Page Change
-            MainMenu.Visibility = Visibility.Hidden;
-            Vote.Visibility = Visibility.Visible;
+            objDBAccess.readDatathroughAdapter(query, dtUsers);
+
+
+            YourVote = dtUsers.Rows[0]["Vote"].ToString();
+
+
+            if (YourVote == "")
+            {
+                MainMenu.Visibility = Visibility.Hidden;
+                Vote.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("You have already voted!");
+            }
+
+
         }
 
         private void BMMCurrentStandings_Click(object sender, RoutedEventArgs e)
@@ -164,7 +185,7 @@ namespace Employee_of_The_Month
         //Current Standings stuff
         private void BCSBack_Click(object sender, RoutedEventArgs e)
         {
-            
+
 
             //Page Change
             MainMenu.Visibility = Visibility.Visible;
