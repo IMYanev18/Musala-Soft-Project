@@ -60,10 +60,10 @@
                     <TextBlock Text="The Month" Grid.Column="1" Grid.Row="2" Margin="0" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
 
                     <TextBlock Text="USERNAME" Margin="10,35,30,0" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="25" FontFamily="Bahnschrift Light Condensed" />
-                    <TextBox Margin="30,35,0,0" Grid.Row="3" Grid.Column="1" MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" MinWidth="215"/>
+                    <TextBox x:Name="txtUsername" Margin="30,35,0,0" Grid.Row="3" Grid.Column="1" MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" MinWidth="215"/>
 
                     <TextBlock Text="PASSWORD" Margin="10,35,30,0" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="25" FontFamily="Bahnschrift Light Condensed"/>
-                    <PasswordBox Margin="30,35,0,0" Grid.Row="4" Grid.Column="1"  MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" MinWidth="215"/>
+                    <PasswordBox x:Name="txtPassword" Margin="30,35,0,0" Grid.Row="4" Grid.Column="1"  MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" MinWidth="215"/>
 
                     <TextBlock Grid.Row="5" Grid.ColumnSpan="2" Margin="10,5,0,0">
                         <Hyperlink Click="Hyperlink_Click">
@@ -76,13 +76,15 @@
                 </Grid>
             </ContentControl>
         </StackPanel>
+     
         
-        <!--Forgot your Username/Password?-->
+        <!--Forgot Your Username/Password?-->
         <StackPanel x:Name="ForgotUsernamePassword" Visibility="Hidden" Grid.Row="5" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="3">
             <TextBlock Text="Enter your email" Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Bahnschrift Light Condensed" />
             <TextBox Margin="0,0,0,0" MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" MinWidth="215"/>
             <Button x:Name="BFUPSubmit" Content="Submit" MaxWidth="100" Margin="0,20"/>
         </StackPanel>
+  
         
         <!--Main Menu Page-->
         <StackPanel x:Name="MainMenu" Visibility="Hidden" Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="3">
@@ -115,6 +117,43 @@
                 </Grid>
             </ContentControl>
         </StackPanel>
+
+        <!--Main Menu Page For Admin-->
+        
+        <ScrollViewer x:Name="MainMenuAdmin" Visibility="Hidden" Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <ContentControl>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Employee" Grid.Column="1" Grid.Row="0" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+                        <TextBlock Text="of" Grid.Column="1" Grid.Row="1" FontSize="20" HorizontalAlignment="Center"/>
+                        <TextBlock Text="The Month" Grid.Column="1" Grid.Row="2" Margin="0" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+
+                        <Button x:Name="BMMAAddUser"  Content='Add User' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMInfoRules_Click"/>
+                        <Button x:Name="BMMADelUser"  Content='Delete User' Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMInfoRules_Click"/>
+                        <Button x:Name="BMMAAddPrize"  Content='Add a Prize' Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40" Click="BMMInfoRules_Click"/>
+                        
+
+                    </Grid>
+                </ContentControl>
+            </StackPanel>
+        </ScrollViewer>
+
 
         <!--Vote Page-->
         <StackPanel x:Name="Vote" Visibility="Hidden" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="8">
