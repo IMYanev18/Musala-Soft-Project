@@ -33,9 +33,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        
-        
-        
+                        
         <!--Login Page-->
         <StackPanel x:Name="Login" Visibility="Visible" Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="3" Orientation="Horizontal"  HorizontalAlignment="Center" >
             <ContentControl>
@@ -148,10 +146,9 @@
 
                         <TextBlock Text="Admin" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                        <Button x:Name="BMMAAddUser"  Content='Add User' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
+                        <Button x:Name="BMMAAddUser" Content='Add User' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
                         <Button x:Name="BMMADelUser"  Content='Delete User' Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
                         <Button x:Name="BMMAAddPrize"  Content='Add a Prize' Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
-                        
 
                     </Grid>
                 </ContentControl>
@@ -209,6 +206,8 @@
                 
                 <DataGrid x:Name="DGPossiblePrizes" AutoGenerateColumns="true"  Margin="0,50,0,30"/>
 
+                <!--Not Working<TextBlock x:Name="TBLastMonthPrize" Text="Last Month's Prize:"/>-->
+
                 <Button x:Name="BPPBack" Content="Back" Margin="150,0" Click="BPPBack_Click"/>
             </StackPanel>
         </ScrollViewer>
@@ -228,7 +227,7 @@
                 <StackPanel>
                     <TextBlock Text="Rules" HorizontalAlignment="Center" FontSize="30" FontFamily="Bahnschrift SemiCondensed" Margin="0,15"/>
                     
-                    <TextBlock Text="You can vote only for one person that isn't you. Whoever receives the most votes wins a prize. The prize is chosen at random from the possible prizes (Check out Possible Prizes page)" TextWrapping="Wrap" TextAlignment="Center" Margin="30,0" FontSize="18" FontFamily="Bahnschrift Light SemiCondensed"/>
+                    <TextBlock Text="You can vote only for one person that isn't you. Whoever receives the most votes wins a prize. The prize is chosen at random from the possible prizes (Check out Possible Prizes page)." TextWrapping="Wrap" TextAlignment="Center" Margin="30,0" FontSize="18" FontFamily="Bahnschrift Light SemiCondensed"/>
                 </StackPanel>
                 
                 <!--FAQ-->
@@ -236,7 +235,8 @@
                     <TextBlock Text="FAQ" HorizontalAlignment="Center" FontSize="30" FontFamily="Bahnschrift SemiCondensed" Margin="0,15"/>
 
                     <TextBlock Text="Q: I accidentally voted for the wrong person. Can I change my vote?&#x0a;A: No, you can't. Votes are final so be careful when choosing who to vote for." FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
-                    <TextBlock Text="Q: Can I exchange my prize for another prize?&#x0a;A: No, you can't. That's why the prize is chosen at random. You can see the possible prizes at Possible Prizes page" FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    <TextBlock Text="Q: Can I exchange my prize for another prize?&#x0a;A: No, you can't. That's why the prize is chosen at random. You can see the possible prizes at Possible Prizes page." FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    <TextBlock Text='Q: When Is the prize drawn?&#x0a;A: The Prize is drawn at the first of every next month. For example you get the most votes in December. On the 1st of January your Prize will be drawn.' FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
                     <TextBlock Text='Q: I forgot my login information. How can I recover my password/username?&#x0a;A: Press "Forgot Username/Password?". Then you will be asked for your email. You will receive your username and password on your email.' FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
                     <TextBlock Text="Q: I found a bug.&#x0a;A: Please don't exploit it and tell your boss." FontSize="18" FontFamily="Bahnschrift Light SemiCondensed" TextWrapping="Wrap" Margin="0,0,0,10"/>
                 </StackPanel>

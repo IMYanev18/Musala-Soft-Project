@@ -25,12 +25,13 @@ namespace Employee_of_The_Month
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static string Id, Email, Username, YourVote, Admin;
+        public static string Id, Email, Username, YourVote, Admin, WinnerPrize ;
 
         int stupidDB;
         DBAccess objDBAccess = new DBAccess();
         DataTable dtUsers = new DataTable();
         DataTable dtPrizes = new DataTable();
+        DataTable dtLastMonthPrize = new DataTable();
 
         public MainWindow()
         {
@@ -103,7 +104,8 @@ namespace Employee_of_The_Month
                 //if the data table is empty that means either the username or the password are wrong
                 else
                 {
-                    MessageBox.Show("Your username or password is wrong");
+                    MessageBox.Show("Your username or password are wrong");
+                    txtPassword.Clear();
                 }
 
 
@@ -116,6 +118,12 @@ namespace Employee_of_The_Month
 
 
         //Forgot Username/Password stuff
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            Login.Visibility = Visibility.Hidden;
+            ForgotUsernamePassword.Visibility = Visibility.Visible;
+        }
+
         private void BFUPSend_Click(object sender, RoutedEventArgs e)
         {
             string EnteredEmail = EmailTxt.Text;
@@ -204,14 +212,16 @@ namespace Employee_of_The_Month
             DGPossiblePrizes.ItemsSource = dtPrizes.AsDataView();
             objDBAccess.closeConn();
 
+            //LastMonthPrize();
+
             //Page Change
             MainMenu.Visibility = Visibility.Hidden;
             PossiblePrizes.Visibility = Visibility.Visible;
+            
         }
 
         private void BMMInfoRules_Click(object sender, RoutedEventArgs e)
         {
-
 
             //Page Change
             MainMenu.Visibility = Visibility.Hidden;
@@ -294,6 +304,18 @@ namespace Employee_of_The_Month
             PossiblePrizes.Visibility = Visibility.Hidden;
         }
 
+        //Not working
+        /*private void LastMonthPrize()
+        {
+            string query = "SELECT * FROM LastMonthPrize";
+
+            objDBAccess.readDatathroughAdapter(query, dtLastMonthPrize);
+
+            WinnerPrize = dtLastMonthPrize.Rows[0]["LastMonthPrize"].ToString();
+
+            TextBlock TBLastMonthPrize = WinnerPrize.txt ;
+        }*/
+
 
         //Info and Rules stuff
         private void BIRBack_Click(object sender, RoutedEventArgs e)
@@ -303,10 +325,139 @@ namespace Employee_of_The_Month
             InfoAndRules.Visibility = Visibility.Hidden;
         }
 
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+
+        //Auto Choose prize
+        private void AutoChoosePrize()
         {
-            Login.Visibility = Visibility.Hidden;
-            ForgotUsernamePassword.Visibility = Visibility.Visible;
+            string query = "SELECT * FROM Prizes DELETE FROM Prizes;";
+
+            objDBAccess.readDatathroughAdapter(query, dtPrizes);
+
+            int RowsWithPrizes = dtPrizes.Rows.Count;
+            Random rng = new Random();
+            int RandomPrize = rng.Next(1, RowsWithPrizes);
+
+            WinnerPrize = dtPrizes.Rows[RandomPrize]["Prize"].ToString();
+
+            string query2 = "Update LastMonthPrize Set LastMonthPrize='"+WinnerPrize+"'";
+
+            SqlCommand updateCommand = new SqlCommand(query);
+
+            updateCommand.Parameters.AddWithValue("LastMonthPrize",WinnerPrize);
+
+            objDBAccess.executeQuery(updateCommand);
         }
+
+        //Auto Draw on the 1st of every month
+        private void AutoDraw()
+        {
+            DateTime Current = DateTime.Now;
+            DateTime CurrentDate = Current.Date;
+
+            DateTime test = new DateTime(2021, 7, 1);
+
+
+            if (Current.Month.ToString() == "1")
+            {
+                DateTime Jan = new DateTime(2021, 1, 1);
+
+                if (DateTime.Compare(CurrentDate, Jan) == 0)
+                {
+                    AutoChoosePrize();
+
+                }
+            }
+            else if (Current.Month.ToString() == "2")
+            {
+                DateTime Feb = new DateTime(2021, 2, 1);
+                if (DateTime.Compare(CurrentDate, Feb) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+            else if (Current.Month.ToString() == "3")
+            {
+                DateTime Mar = new DateTime(2021, 3, 1);
+                if (DateTime.Compare(CurrentDate, Mar) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+            else if (Current.Month.ToString() == "4")
+            {
+                DateTime Apr = new DateTime(2021, 4, 1);
+                if (DateTime.Compare(CurrentDate, Apr) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+            else if (Current.Month.ToString() == "5")
+            {
+                DateTime May = new DateTime(2021, 5, 1);
+                if (DateTime.Compare(CurrentDate, May) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+            else if (Current.Month.ToString() == "6")
+            {
+                DateTime Jun = new DateTime(2021, 6, 1);
+                if (DateTime.Compare(CurrentDate, Jun) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+            else if (Current.Month.ToString() == "7")
+            {
+                DateTime Jul = new DateTime(2021, 7, 1);
+                if (DateTime.Compare(CurrentDate, Jul) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+            else if (Current.Month.ToString() == "8")
+            {
+                DateTime Aug = new DateTime(2021, 8, 1);
+                if (DateTime.Compare(CurrentDate, Aug) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+
+            else if (Current.Month.ToString() == "9")
+            {
+                DateTime Sep = new DateTime(2021, 9, 1);
+                if (DateTime.Compare(CurrentDate, Sep) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+            else if (Current.Month.ToString() == "10")
+            {
+                DateTime Oct = new DateTime(2021, 10, 1);
+                if (DateTime.Compare(CurrentDate, Oct) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+            else if (Current.Month.ToString() == "11")
+            {
+                DateTime Nov = new DateTime(2021, 11, 1);
+                if (DateTime.Compare(CurrentDate, Nov) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+            else if (Current.Month.ToString() == "12")
+            {
+                DateTime Dec = new DateTime(2021, 12, 1);
+                if (DateTime.Compare(CurrentDate, Dec) == 0)
+                {
+                    AutoChoosePrize();
+                }
+            }
+        }
+
+
     }
 }
