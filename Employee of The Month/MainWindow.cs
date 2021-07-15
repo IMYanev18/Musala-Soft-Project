@@ -191,7 +191,7 @@ namespace Employee_of_The_Month
         private void BMMCurrentStandings_Click(object sender, RoutedEventArgs e)
         {
             dtUsers.Clear();
-            string query= "SELECT Username, Vote, Votes, ROW_NUMBER() OVER (ORDER BY Votes DESC) AS Place FROM Employees";
+            string query= "SELECT Username, Vote, Votes, ROW_NUMBER() OVER (ORDER BY Votes DESC) AS Place FROM Employees WHERE NOT Admin=1;";
 
             objDBAccess.readDatathroughAdapter(query, dtUsers);
 
