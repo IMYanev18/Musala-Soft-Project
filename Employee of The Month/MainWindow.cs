@@ -27,7 +27,7 @@ namespace Employee_of_The_Month
     {
         public static string Id, Email, Username, YourVote, Admin;
 
-        int stupidDBS = 0;
+        int stupidDB;
         DBAccess objDBAccess = new DBAccess();
         DataTable dtUsers = new DataTable();
         DataTable dtPrizes = new DataTable();
@@ -36,6 +36,7 @@ namespace Employee_of_The_Month
         {
             InitializeComponent();
         }
+
 
         // Login stuff
         private void BLLogin_Click(object sender, RoutedEventArgs e)
@@ -113,6 +114,36 @@ namespace Employee_of_The_Month
                 
         }
 
+
+        //Forgot Username/Password stuff
+        private void BFUPSend_Click(object sender, RoutedEventArgs e)
+        {
+            string EnteredEmail = EmailTxt.Text;
+
+            string query = "SELECT Username,[Password] FROM Employees WHERE Email='" + EnteredEmail+"'";
+            dtUsers.Clear();
+            objDBAccess.readDatathroughAdapter(query, dtUsers);
+
+            if(dtUsers.Rows.Count == 1)
+            {
+                MessageBox.Show("Succesfully sent Username and Password to that email.","Success");
+                dtUsers.Clear();
+                ForgotUsernamePassword.Visibility = Visibility.Hidden;
+                Login.Visibility = Visibility.Visible;
+                EmailTxt.Clear();
+            }
+            else
+            {
+                MessageBox.Show("A user with that email doesn't exist!", "Error");
+                dtUsers.Clear();
+                ForgotUsernamePassword.Visibility = Visibility.Hidden;
+                Login.Visibility = Visibility.Visible;
+                EmailTxt.Clear();
+            }
+
+        }
+
+
         //Main menu stuff
         private void BMMVote_Click(object sender, RoutedEventArgs e)
         {
@@ -123,7 +154,7 @@ namespace Employee_of_The_Month
             YourVote = dtUsers.Rows[0]["Vote"].ToString();
             dtUsers.Clear();
 
-            if (YourVote == "" && stupidDBS==0)
+            if (YourVote == "" && stupidDB==0)
             {
 
                 string query = "SELECT Username FROM Employees WHERE NOT Username='" + Username + "'";
@@ -138,7 +169,7 @@ namespace Employee_of_The_Month
 
                 MainMenu.Visibility = Visibility.Hidden;
                 Vote.Visibility = Visibility.Visible;
-                stupidDBS = 1;
+                stupidDB = 1;
                 
             }
             else
@@ -187,6 +218,7 @@ namespace Employee_of_The_Month
             InfoAndRules.Visibility = Visibility.Visible;
         }
 
+
         // Vote stuff
         private void BVVote_Click(object sender, RoutedEventArgs e)
         {
@@ -221,6 +253,7 @@ namespace Employee_of_The_Month
             }
         }
 
+
         //Current Standings stuff
         private void DataGridCurrentStandings(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
@@ -252,22 +285,19 @@ namespace Employee_of_The_Month
             CurrentStandings.Visibility = Visibility.Hidden;
         }
 
+
         //Possible Prizes stuff
         private void BPPBack_Click(object sender, RoutedEventArgs e)
         {
-
-
             //Page Change
             MainMenu.Visibility = Visibility.Visible;
             PossiblePrizes.Visibility = Visibility.Hidden;
         }
 
+
         //Info and Rules stuff
         private void BIRBack_Click(object sender, RoutedEventArgs e)
         {
-
-
-
             //Page Change
             MainMenu.Visibility = Visibility.Visible;
             InfoAndRules.Visibility = Visibility.Hidden;

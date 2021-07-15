@@ -81,9 +81,10 @@
         
         <!--Forgot Your Username/Password?-->
         <StackPanel x:Name="ForgotUsernamePassword" Visibility="Hidden" Grid.Row="5" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="3">
-            <TextBlock Text="Enter your email" Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Bahnschrift Light Condensed" />
-            <TextBox Margin="0,0,0,0" MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" MinWidth="215"/>
-            <Button x:Name="BFUPSubmit" Content="Submit" MaxWidth="100" Margin="0,20"/>
+            <TextBlock  Text="Enter your email" Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Bahnschrift Light Condensed" />
+            <TextBox x:Name="EmailTxt" Margin="0,0,0,0" MaxHeight="35" MinHeight="35" FontSize="22" MaxWidth="215" MinWidth="215"/>
+            <Button x:Name="BFUPSend" Content="Send" MaxWidth="100" Margin="0,20" Click="BFUPSend_Click"/>
+            <!--<Button x:Name="BFUPSubmit" Content="Submit" MaxWidth="100" Margin="0,20"/>-->
         </StackPanel>
 
         
