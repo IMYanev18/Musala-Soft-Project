@@ -120,7 +120,6 @@
         </StackPanel>
 
         <!--Main Menu Page For Admin-->
-        
         <ScrollViewer x:Name="MainMenuAdmin" Visibility="Hidden" Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Hidden">
             <StackPanel>
                 <ContentControl>
@@ -180,10 +179,7 @@
                     <TextBlock Text="The Month" Grid.Column="1" Grid.Row="2" Margin="0" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
 
                     <ComboBox x:Name="VoteComboBox" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Margin="0,80,0,0" MaxWidth="250" MinWidth="150" Height="30" FontSize="16">
-                        <ComboBoxItem>Stupid1</ComboBoxItem>
-                        <ComboBoxItem>Stupid2</ComboBoxItem>
-                        <ComboBoxItem>Stupid3</ComboBoxItem>
-                        <ComboBoxItem>Stupid4</ComboBoxItem>
+                        
                     </ComboBox>
                     
                     <Button x:Name="BVVote" Content="VOTE" Grid.Column="1" Grid.Row="4" Margin="0,30,0,0" MaxWidth="120" MinHeight="30" MaxHeight="40" Click="BVVote_Click"/>

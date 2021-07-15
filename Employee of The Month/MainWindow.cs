@@ -27,8 +27,10 @@ namespace Employee_of_The_Month
     {
         public static string Id, Email, Username, YourVote, Admin;
 
+        int stupidDBS = 0;
         DBAccess objDBAccess = new DBAccess();
         DataTable dtUsers = new DataTable();
+        DataTable completeVote = new DataTable();
 
         public MainWindow()
         {
@@ -39,16 +41,16 @@ namespace Employee_of_The_Month
         private void BLLogin_Click(object sender, RoutedEventArgs e)
         {
             //string usernames and passwords 
-            string UsernameTxt = txtUsername.Text;
-            string PasswordTxt = txtPassword.Password;
+            string usernameTxt = txtUsername.Text;
+            string passwordTxt = txtPassword.Password;
 
             //checks if username text box is empty and spits a message
-            if(UsernameTxt.Equals("")){
+            if(usernameTxt.Equals("")){
                 MessageBox.Show("Username field can't be empty");
             }
             
             //checks if password text box is empty and spits a message
-            else if (PasswordTxt.Equals(""))
+            else if (passwordTxt.Equals(""))
             {
                 MessageBox.Show("Password field can't be empty");
             }
@@ -57,7 +59,7 @@ namespace Employee_of_The_Month
             else
             {
                 //creates a string with the query you send the database
-                string query = "SELECT Id ,Username, Admin FROM Employees WHERE Username ='" + UsernameTxt + "'AND [Password] ='" + PasswordTxt+"'";
+                string query = "SELECT Id, Email, Username, Vote,Admin FROM Employees WHERE Username ='" + usernameTxt + "'AND [Password] ='" + passwordTxt+"'";
                                
                 //sends the query to the database and fills return in the data table dtUsers
                 objDBAccess.readDatathroughAdapter(query, dtUsers);
@@ -65,9 +67,15 @@ namespace Employee_of_The_Month
                 //if data table has something in it that means that the username and password are correct
                 if (dtUsers.Rows.Count == 1)
                 {
-                    //Admin gets value either False or True depending on the answer we got from the query
-                    Admin = dtUsers.Rows[0]["Admin"].ToString();
+                    // We assign the information from the table to variables and we clear the data table
                     Id = dtUsers.Rows[0]["Id"].ToString();
+                    Email = dtUsers.Rows[0]["Email"].ToString();
+                    Username = dtUsers.Rows[0]["Username"].ToString();
+                    YourVote = dtUsers.Rows[0]["Vote"].ToString();
+                    Admin = dtUsers.Rows[0]["Admin"].ToString();
+                    
+                    dtUsers.Clear();
+
 
                     //Checks if the account is admin
                     if (Admin == "False")
@@ -77,7 +85,7 @@ namespace Employee_of_The_Month
 
                         //Shows main menu page
                         MainMenu.Visibility = Visibility.Visible;
-                        dtUsers.Clear();
+                        
                     }
 
                     else
@@ -87,7 +95,7 @@ namespace Employee_of_The_Month
 
                         //shows admin main menu
                         MainMenuAdmin.Visibility = Visibility.Visible;
-                        dtUsers.Clear();
+                        
                     }
                 }
 
@@ -105,24 +113,33 @@ namespace Employee_of_The_Month
                 
         }
 
-
         //Main menu stuff
         private void BMMVote_Click(object sender, RoutedEventArgs e)
         {
-            
-            string query = "SELECT Vote FROM Employees WHERE Id='"+Id+"'";
+            string query2 = "SELECT Vote FROM Employees WHERE Username ='" + Username + "'";
 
-
-            objDBAccess.readDatathroughAdapter(query, dtUsers);
-
+            objDBAccess.readDatathroughAdapter(query2, dtUsers);
 
             YourVote = dtUsers.Rows[0]["Vote"].ToString();
+            dtUsers.Clear();
 
-
-            if (YourVote == "")
+            if (YourVote == "" && stupidDBS==0)
             {
+
+                string query = "SELECT Username FROM Employees WHERE NOT Username='" + Username + "'";
+
+                objDBAccess.readDatathroughAdapter(query, dtUsers);
+
+                VoteComboBox.ItemsSource = dtUsers.DefaultView;
+
+                VoteComboBox.DisplayMemberPath = "Username";
+                VoteComboBox.SelectedValuePath = "Username";
+
+
                 MainMenu.Visibility = Visibility.Hidden;
                 Vote.Visibility = Visibility.Visible;
+                stupidDBS = 1;
+                
             }
             else
             {
@@ -134,7 +151,7 @@ namespace Employee_of_The_Month
 
         private void BMMCurrentStandings_Click(object sender, RoutedEventArgs e)
         {
-
+            string query="SELECT Username, Votes FROM Employees ORDER BY Votes desc";
 
             //Page Change
             MainMenu.Visibility = Visibility.Hidden;
@@ -163,6 +180,7 @@ namespace Employee_of_The_Month
         // Vote stuff
         private void BVVote_Click(object sender, RoutedEventArgs e)
         {
+
             if (VoteComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Please select a value", "Error");
@@ -170,6 +188,17 @@ namespace Employee_of_The_Month
             }
             else
             {
+                object selectedItem = VoteComboBox.SelectedValue;
+
+                string query = "UPDATE Employees SET Vote = '"+ selectedItem.ToString() +"' WHERE Id = 1; UPDATE Employees SET Votes = Votes + 1 WHERE Username = '"+ selectedItem.ToString()+"'";
+
+                SqlCommand updateCommand = new SqlCommand(query);
+
+                updateCommand.Parameters.AddWithValue("Vote",selectedItem.ToString());
+                updateCommand.Parameters.AddWithValue("Votes", selectedItem.ToString());
+
+                objDBAccess.executeQuery(updateCommand);
+
                 //Send vote to database
                 if (true)
                 { //check if vote was registered/has already voted in the database else spit an error code
