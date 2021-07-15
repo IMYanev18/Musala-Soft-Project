@@ -30,7 +30,7 @@ namespace Employee_of_The_Month
         int stupidDBS = 0;
         DBAccess objDBAccess = new DBAccess();
         DataTable dtUsers = new DataTable();
-        DataTable completeVote = new DataTable();
+        DataTable dtPrizes = new DataTable();
 
         public MainWindow()
         {
@@ -151,8 +151,13 @@ namespace Employee_of_The_Month
 
         private void BMMCurrentStandings_Click(object sender, RoutedEventArgs e)
         {
-            string query="SELECT Username, Votes FROM Employees ORDER BY Votes desc";
+            dtUsers.Clear();
+            string query= "SELECT Username, Vote, Votes, ROW_NUMBER() OVER (ORDER BY Votes DESC) AS Place FROM Employees";
 
+            objDBAccess.readDatathroughAdapter(query, dtUsers);
+
+            DGCurrentStandings.ItemsSource = dtUsers.AsDataView();
+            objDBAccess.closeConn();
             //Page Change
             MainMenu.Visibility = Visibility.Hidden;
             CurrentStandings.Visibility = Visibility.Visible;
@@ -160,8 +165,13 @@ namespace Employee_of_The_Month
 
         private void BMMPossiblePrizes_Click(object sender, RoutedEventArgs e)
         {
+            dtPrizes.Clear();
+            string query = "SELECT Id, Prize FROM Prizes";
 
+            objDBAccess.readDatathroughAdapter(query, dtPrizes);
 
+            DGPossiblePrizes.ItemsSource = dtPrizes.AsDataView();
+            objDBAccess.closeConn();
 
             //Page Change
             MainMenu.Visibility = Visibility.Hidden;
@@ -212,9 +222,30 @@ namespace Employee_of_The_Month
         }
 
         //Current Standings stuff
+        private void DataGridCurrentStandings(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Id")
+            {
+                e.Column = null;
+            }
+            if (e.PropertyName == "Email")
+            {
+                e.Column = null;
+            }
+            if (e.PropertyName == "Password")
+            {
+                e.Column = null;
+            }
+            if (e.PropertyName == "Admin")
+            {
+                e.Column = null;
+            }
+
+        }
+
         private void BCSBack_Click(object sender, RoutedEventArgs e)
         {
-
+            dtUsers.Clear();
 
             //Page Change
             MainMenu.Visibility = Visibility.Visible;
