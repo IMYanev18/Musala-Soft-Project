@@ -26,4 +26,12 @@ Our project is about Employee of the month. You have to log in with your account
 
 - FAQ page
 
+
+## How to run the project
+
+1. Open Visual Studio
+2. Clone the repository
+3. Go to the Tool menu and download the NuGet tool
+4. If it installed correctly you should be able to press [CTRL + F5] and run the project
+
 </p>
