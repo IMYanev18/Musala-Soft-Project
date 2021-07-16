@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Employee_of_The_Month"
         mc:Ignorable="d"
         MinWidth="700"
-        MinHeight="450"
+        MinHeight="500"
         Background="#E08F52"
-        Title="Employee of The Month" Height="450" Width="800">
+        Title="Employee of The Month" Height="500" Width="800">
     <Grid x:Name="main">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -118,44 +118,6 @@
             </ContentControl>
         </StackPanel>
 
-        
-        <!--Main Menu Page For Admin-->
-        <ScrollViewer x:Name="MainMenuAdmin" Visibility="Hidden" Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Hidden">
-            <StackPanel>
-                <ContentControl>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Text="Employee" Grid.Column="1" Grid.Row="0" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
-                        <TextBlock Text="of" Grid.Column="1" Grid.Row="1" FontSize="20" HorizontalAlignment="Center"/>
-                        <TextBlock Text="The Month" Grid.Column="1" Grid.Row="2" Margin="0" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
-
-                        <TextBlock Text="Admin" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-
-                        <Button x:Name="BMMAAddUser" Content='Add User' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
-                        <Button x:Name="BMMADelUser"  Content='Delete User' Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
-                        <Button x:Name="BMMAAddPrize"  Content='Add a Prize' Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
-
-                    </Grid>
-                </ContentControl>
-            </StackPanel>
-        </ScrollViewer>
-
-        
         <!--Vote Page-->
         <StackPanel x:Name="Vote" Visibility="Hidden" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="8">
             <ContentControl>
@@ -166,6 +128,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -182,6 +145,7 @@
                     </ComboBox>
                     
                     <Button x:Name="BVVote" Content="VOTE" Grid.Column="1" Grid.Row="4" Margin="0,30,0,0" MaxWidth="120" MinHeight="30" MaxHeight="40" Click="BVVote_Click"/>
+                    <Button x:Name="BVCancel" Content="Cancel" Grid.Column="1" Grid.Row="5" Margin="0,30,0,0" MaxWidth="120" MinHeight="30" MaxHeight="40" Click="BVCancel_Click"/>
                 </Grid>
             </ContentControl>
         </StackPanel>
@@ -246,6 +210,59 @@
         </ScrollViewer>
 
 
+        <!--Main Menu Page For Admin-->
+        <ScrollViewer x:Name="MainMenuAdmin" Visibility="Hidden" Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <ContentControl>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
+                        <TextBlock Text="Employee" Grid.Column="1" Grid.Row="0" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+                        <TextBlock Text="of" Grid.Column="1" Grid.Row="1" FontSize="20" HorizontalAlignment="Center"/>
+                        <TextBlock Text="The Month" Grid.Column="1" Grid.Row="2" Margin="0" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Condensed"/>
+
+                        <TextBlock Text="Admin" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                        <Button x:Name="BMMAAddUser" Click="BMMAAddUser_Click" Content='Add User' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
+                        <Button x:Name="BMMARemoveUser" Click="BMMARemoveUser_Click" Content='Remove User' Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
+                        <Button x:Name="BMMAAddPrize" Click="BMMAAddPrize_Click" Content='Add a Prize' Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
+                        <Button x:Name="BMMARemovePrize" Click="BMMARemovePrize_Click" Content='Remove a Prize' Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3"  Margin="10" MaxWidth="200" MaxHeight="50" MinHeight="40"/>
+                    </Grid>
+                </ContentControl>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <!--Admin Add User Page-->
+        <StackPanel x:Name="AddUserPage" Visibility="Hidden" Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="3">
+            <TextBlock Text="ADD USER" FontSize="35" HorizontalAlignment="Center" Margin="0,15,0,0" FontFamily="Bahnschrift Condensed"/>
+            
+            <TextBlock Text="Email" HorizontalAlignment="Center" Margin="0,25,0,10" FontSize="18"/>
+            <TextBox x:Name="AUEmail" Width="200" MinHeight="25" MaxWidth="200" MaxHeight="25"/>
+            
+            <TextBlock Text="Username" HorizontalAlignment="Center" Margin="0,15,0,10" FontSize="18"/>
+            <TextBox x:Name="AUUsername" Width="200" MinHeight="25" MaxWidth="200" MaxHeight="25"/>
+            
+            <TextBlock Text="Password" HorizontalAlignment="Center" Margin="0,15,0,10" FontSize="18"/>
+            <PasswordBox x:Name="AUPassword" Width="200" MinHeight="25" MaxWidth="200" MaxHeight="25"/>
+
+            <Button Content="Submit" Click="AAUPSubmit_Click" Width="150" MaxWidth="150" MinWidth="150" MinHeight="34" Margin="0,10"/>
+            <Button Content="Cancel" Click="AAUPCancel_Click" Width="150" MaxWidth="150" MinWidth="150" MinHeight="34"/>
+        </StackPanel>
+        
+        
     </Grid>
 </Window>

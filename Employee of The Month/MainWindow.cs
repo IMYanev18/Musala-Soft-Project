@@ -25,7 +25,7 @@ namespace Employee_of_The_Month
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static string Id, Email, Username, YourVote, Admin, WinnerPrize ;
+        public static string Id, Email, Username, YourVote, Admin, WinnerPrize;
 
         int stupidDB;
         DBAccess objDBAccess = new DBAccess();
@@ -47,22 +47,22 @@ namespace Employee_of_The_Month
             string passwordTxt = txtPassword.Password;
 
             //checks if username text box is empty and spits a message
-            if(usernameTxt.Equals("")){
+            if (usernameTxt.Equals("")) {
                 MessageBox.Show("Username field can't be empty");
             }
-            
+
             //checks if password text box is empty and spits a message
             else if (passwordTxt.Equals(""))
             {
                 MessageBox.Show("Password field can't be empty");
             }
-            
+
             //means both fields are filled with something
             else
             {
                 //creates a string with the query you send the database
-                string query = "SELECT Id, Email, Username, Vote,Admin FROM Employees WHERE Username ='" + usernameTxt + "'AND [Password] ='" + passwordTxt+"'";
-                               
+                string query = "SELECT Id, Email, Username, Vote,Admin FROM Employees WHERE Username ='" + usernameTxt + "'AND [Password] ='" + passwordTxt + "'";
+
                 //sends the query to the database and fills return in the data table dtUsers
                 objDBAccess.readDatathroughAdapter(query, dtUsers);
 
@@ -75,7 +75,7 @@ namespace Employee_of_The_Month
                     Username = dtUsers.Rows[0]["Username"].ToString();
                     YourVote = dtUsers.Rows[0]["Vote"].ToString();
                     Admin = dtUsers.Rows[0]["Admin"].ToString();
-                    
+
                     dtUsers.Clear();
 
 
@@ -87,7 +87,7 @@ namespace Employee_of_The_Month
 
                         //Shows main menu page
                         MainMenu.Visibility = Visibility.Visible;
-                        
+
                     }
 
                     else
@@ -97,7 +97,7 @@ namespace Employee_of_The_Month
 
                         //shows admin main menu
                         MainMenuAdmin.Visibility = Visibility.Visible;
-                        
+
                     }
                 }
 
@@ -110,10 +110,10 @@ namespace Employee_of_The_Month
 
 
             }
- 
-            
 
-                
+
+
+
         }
 
 
@@ -128,13 +128,13 @@ namespace Employee_of_The_Month
         {
             string EnteredEmail = EmailTxt.Text;
 
-            string query = "SELECT Username,[Password] FROM Employees WHERE Email='" + EnteredEmail+"'";
+            string query = "SELECT Username,[Password] FROM Employees WHERE Email='" + EnteredEmail + "'";
             dtUsers.Clear();
             objDBAccess.readDatathroughAdapter(query, dtUsers);
 
-            if(dtUsers.Rows.Count == 1)
+            if (dtUsers.Rows.Count == 1)
             {
-                MessageBox.Show("Succesfully sent Username and Password to that email.","Success");
+                MessageBox.Show("Succesfully sent Username and Password to that email.", "Success");
                 dtUsers.Clear();
                 ForgotUsernamePassword.Visibility = Visibility.Hidden;
                 Login.Visibility = Visibility.Visible;
@@ -162,10 +162,10 @@ namespace Employee_of_The_Month
             YourVote = dtUsers.Rows[0]["Vote"].ToString();
             dtUsers.Clear();
 
-            if (YourVote == "" && stupidDB==0)
+            if (YourVote == "" && stupidDB == 0)
             {
 
-                string query = "SELECT Username FROM Employees WHERE NOT Username='" + Username + "'";
+                string query = "SELECT Username FROM Employees WHERE NOT Username='" + Username + "'AND NOT Admin=1;";
 
                 objDBAccess.readDatathroughAdapter(query, dtUsers);
 
@@ -177,8 +177,7 @@ namespace Employee_of_The_Month
 
                 MainMenu.Visibility = Visibility.Hidden;
                 Vote.Visibility = Visibility.Visible;
-                stupidDB = 1;
-                
+
             }
             else
             {
@@ -191,7 +190,7 @@ namespace Employee_of_The_Month
         private void BMMCurrentStandings_Click(object sender, RoutedEventArgs e)
         {
             dtUsers.Clear();
-            string query= "SELECT Username, Vote, Votes, ROW_NUMBER() OVER (ORDER BY Votes DESC) AS Place FROM Employees WHERE NOT Admin=1;";
+            string query = "SELECT Username, Vote, Votes, ROW_NUMBER() OVER (ORDER BY Votes DESC) AS Place FROM Employees WHERE NOT Admin=1;";
 
             objDBAccess.readDatathroughAdapter(query, dtUsers);
 
@@ -217,7 +216,7 @@ namespace Employee_of_The_Month
             //Page Change
             MainMenu.Visibility = Visibility.Hidden;
             PossiblePrizes.Visibility = Visibility.Visible;
-            
+
         }
 
         private void BMMInfoRules_Click(object sender, RoutedEventArgs e)
@@ -242,25 +241,30 @@ namespace Employee_of_The_Month
             {
                 object selectedItem = VoteComboBox.SelectedValue;
 
-                string query = "UPDATE Employees SET Vote = '"+ selectedItem.ToString() +"' WHERE Id = 1; UPDATE Employees SET Votes = Votes + 1 WHERE Username = '"+ selectedItem.ToString()+"'";
+                string query = "UPDATE Employees SET Vote = '" + selectedItem.ToString() + "' WHERE Id = '"+Id+"'; UPDATE Employees SET Votes = Votes + 1 WHERE Username = '" + selectedItem.ToString() + "'";
 
                 SqlCommand updateCommand = new SqlCommand(query);
 
-                updateCommand.Parameters.AddWithValue("Vote",selectedItem.ToString());
-                updateCommand.Parameters.AddWithValue("Votes", selectedItem.ToString());
+                updateCommand.Parameters.AddWithValue("Vote", selectedItem.ToString());
+                updateCommand.Parameters.AddWithValue("Votes", 1.ToString());
 
                 objDBAccess.executeQuery(updateCommand);
 
-                //Send vote to database
-                if (true)
-                { //check if vote was registered/has already voted in the database else spit an error code
-                    MessageBox.Show("Your vote was succesful", "Congratulations");
+                stupidDB = 1;
 
-                    //Page Change
-                    MainMenu.Visibility = Visibility.Visible;
-                    Vote.Visibility = Visibility.Hidden;
-                }
+                MessageBox.Show("Your vote was succesful", "Congratulations");
+
+                //Page Change
+                MainMenu.Visibility = Visibility.Visible;
+                Vote.Visibility = Visibility.Hidden;
+                
             }
+        }
+
+        private void BVCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Vote.Visibility = Visibility.Hidden;
+            MainMenu.Visibility = Visibility.Visible;
         }
 
 
@@ -339,11 +343,11 @@ namespace Employee_of_The_Month
 
             WinnerPrize = dtPrizes.Rows[RandomPrize]["Prize"].ToString();
 
-            string query2 = "Update LastMonthPrize Set LastMonthPrize='"+WinnerPrize+"'";
+            string query2 = "Update LastMonthPrize Set LastMonthPrize='" + WinnerPrize + "'";
 
             SqlCommand updateCommand = new SqlCommand(query);
 
-            updateCommand.Parameters.AddWithValue("LastMonthPrize",WinnerPrize);
+            updateCommand.Parameters.AddWithValue("LastMonthPrize", WinnerPrize);
 
             objDBAccess.executeQuery(updateCommand);
         }
@@ -459,5 +463,76 @@ namespace Employee_of_The_Month
         }
 
 
+
+
+        //Admin Stuff
+        private void BMMAAddUser_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuAdmin.Visibility = Visibility.Hidden;
+            AddUserPage.Visibility = Visibility.Visible;
+        }
+
+        private void BMMARemoveUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BMMAAddPrize_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BMMARemovePrize_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        //Admin Add User Page
+        //Doesn't check If a user with stuff entered already exists
+        private void AAUPSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            string REmail = AUEmail.Text;
+            string RUsername = AUUsername.Text;
+            string RPassword = AUPassword.Password;
+
+            if (AUEmail.Equals(""))
+            {
+                MessageBox.Show("Email field can't be empty");
+            }
+
+            
+            else if (AUUsername.Equals(""))
+            {
+                MessageBox.Show("Username field can't be empty");
+            }
+
+            else if (AUPassword.Equals(""))
+            {
+                MessageBox.Show("Password field can't be empty");
+            }
+
+            else
+            {
+                string query = " INSERT INTO Employees (Email,Username,Password,Vote,Votes,Admin) VALUES('" + REmail + "', '" + RUsername + "'," + RPassword + ", NULL, 0, 0);";
+                
+                SqlCommand CreateCommand = new SqlCommand(query);
+
+                CreateCommand.Parameters.AddWithValue("Email", REmail);
+                CreateCommand.Parameters.AddWithValue("Username", RUsername);
+                CreateCommand.Parameters.AddWithValue("Password", RPassword);
+                CreateCommand.Parameters.AddWithValue("Vote", "NULL");
+                CreateCommand.Parameters.AddWithValue("Votes", 0);
+                CreateCommand.Parameters.AddWithValue("Admin", 0);
+
+                objDBAccess.executeQuery(CreateCommand);
+            }
+        }
+
+        private void AAUPCancel_Click(object sender, RoutedEventArgs e)
+        {
+            AddUserPage.Visibility = Visibility.Hidden;
+            MainMenuAdmin.Visibility = Visibility.Visible;
+        }
     }
 }
